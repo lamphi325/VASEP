@@ -9,5 +9,9 @@ namespace VASEP.Interfaces
     public interface IHomeBusinessLogic
     {
         Task<BaiMoiNhatResponse> BaiMoiNhat(BaiMoiNhatRequest request);
+
+        Task<NewDetailResponse> NewDetail(NewDetailRequest request);
+
+        Task<BaiMoiDanhMucResponse> BaiMoiDanhMuc(BaiMoiDanhMucRequest request);
     }
 }

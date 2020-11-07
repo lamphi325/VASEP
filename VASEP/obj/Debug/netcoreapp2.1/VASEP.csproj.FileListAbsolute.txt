@@ -9,10 +9,10 @@ C:\Users\PHI\source\repos\VASEP\VASEP\bin\Debug\netcoreapp2.1\VASEP.pdb
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.csprojAssemblyReference.cache
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.AssemblyInfoInputs.cache
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.AssemblyInfo.cs
-C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.csproj.CoreCompileInputs.cache
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.RazorAssemblyInfo.cache
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.RazorAssemblyInfo.cs
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.RazorTargetAssemblyInfo.cache
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.dll
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.pdb
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.genruntimeconfig.cache
+C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.csproj.CoreCompileInputs.cache

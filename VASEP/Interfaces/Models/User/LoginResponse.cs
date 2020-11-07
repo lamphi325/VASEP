@@ -8,5 +8,7 @@ namespace VASEP.Interfaces.Models.User
 {
     public class LoginResponse : BaseResponse<ResponseStatus>
     {
+        public int Id { get; set; }
+        public string Token { get; set; }
     }
 }
