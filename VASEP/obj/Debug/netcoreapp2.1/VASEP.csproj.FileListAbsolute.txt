@@ -15,4 +15,5 @@ C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.RazorTargetA
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.dll
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.pdb
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.genruntimeconfig.cache
+C:\Users\PHI\source\repos\VASEP\VASEP\bin\Debug\netcoreapp2.1\web.config
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Debug\netcoreapp2.1\VASEP.csproj.CoreCompileInputs.cache

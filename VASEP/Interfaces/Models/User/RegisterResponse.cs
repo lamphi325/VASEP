@@ -8,5 +8,6 @@ namespace VASEP.Interfaces.Models.User
 {
     public class RegisterResponse : BaseResponse<ResponseStatus>
     {
+        public object Errors { get; set; }
     }
 }

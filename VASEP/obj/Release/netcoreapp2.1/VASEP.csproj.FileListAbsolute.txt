@@ -16,3 +16,4 @@ C:\Users\PHI\source\repos\VASEP\VASEP\obj\Release\netcoreapp2.1\VASEP.dll
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Release\netcoreapp2.1\VASEP.pdb
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Release\netcoreapp2.1\VASEP.genruntimeconfig.cache
 C:\Users\PHI\source\repos\VASEP\VASEP\obj\Release\netcoreapp2.1\VASEP.csprojAssemblyReference.cache
+C:\Users\PHI\source\repos\VASEP\VASEP\bin\Release\netcoreapp2.1\web.config
