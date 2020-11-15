@@ -10,9 +10,9 @@ using VASEP.Common.Base;
 using VASEP.Interfaces;
 using VASEP.Interfaces.Models.User;
 using VASEP.Models;
-using System.Security.Cryptography;
 using System.Text;
 using System.IO;
+using VASEP.Common.Encrypt;
 
 namespace VASEP.Implement
 {
@@ -31,21 +31,25 @@ namespace VASEP.Implement
             {
                 using (IDbConnection connection = new SqlConnection(_configuration.GetValue<string>("ConnectionStrings:DefaultConnection")))
                 {
-                    AspnetMembership aspnetMembership = new AspnetMembership();
                     Mi user = new Mi();
+                    Users users = new Users();
+                    AspnetMembership aspnetMembership = new AspnetMembership();
                     DynamicParameters parameters = new DynamicParameters();
                     parameters.Add("@UserName", request.UserName);
+
                     await Task.Run(() =>
                         aspnetMembership = connection.Query<AspnetMembership>("aspnet_Membership_GetByUserName", parameters, null, true, null, CommandType.StoredProcedure).FirstOrDefault()
                     );
-                    if (aspnetMembership != null)
+
+                    await Task.Run(() =>
+                        user = connection.Query<Mi>("MI_GetBy_UserName", parameters, null, true, null, CommandType.StoredProcedure).FirstOrDefault()
+                    );
+                    if (user != null)
                     {
-                        var passwordHashdle = Convert.ToBase64String((new Rfc2898DeriveBytes(request.Password, System.Convert.FromBase64String(aspnetMembership.PasswordSalt))).GetBytes(20));
-                        if (passwordHashdle == aspnetMembership.Password)
+                        var bytes = Encoding.UTF8.GetBytes(aspnetMembership.PasswordSalt);
+                        var decryPass = AES.Decrypt(user.Password, bytes);
+                        if (request.Password == decryPass)
                         {
-                            await Task.Run(() =>
-                                user = connection.Query<Mi>("MI_GetBy_UserName", parameters, null, true, null, CommandType.StoredProcedure).FirstOrDefault()
-                            );
                             return new LoginResponse
                             {
                                 Status = ResponseStatus.Success,

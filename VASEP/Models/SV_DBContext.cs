@@ -173,6 +173,7 @@ namespace VASEP.Models
         public virtual DbSet<SkinPackages> SkinPackages { get; set; }
         public virtual DbSet<Skins> Skins { get; set; }
         public virtual DbSet<Sqlqueries> Sqlqueries { get; set; }
+        public virtual DbSet<Subscribe> Subscribe { get; set; }
         public virtual DbSet<SynonymsGroups> SynonymsGroups { get; set; }
         public virtual DbSet<SystemMessages> SystemMessages { get; set; }
         public virtual DbSet<TabAliasSkins> TabAliasSkins { get; set; }
@@ -204,6 +205,8 @@ namespace VASEP.Models
         public virtual DbSet<VideosByMedia> VideosByMedia { get; set; }
         public virtual DbSet<VideosProcess> VideosProcess { get; set; }
         public virtual DbSet<VideosUserProcess> VideosUserProcess { get; set; }
+        public virtual DbSet<VsPublicationCarts> VsPublicationCarts { get; set; }
+        public virtual DbSet<VsPublicationValues> VsPublicationValues { get; set; }
         public virtual DbSet<VsThongkeBaoCao> VsThongkeBaoCao { get; set; }
         public virtual DbSet<VsThongKeBaoCaoFiles> VsThongKeBaoCaoFiles { get; set; }
         public virtual DbSet<WebLinks> WebLinks { get; set; }
@@ -216,8 +219,8 @@ namespace VASEP.Models
         // Unable to generate entity type for table 'dbo.News_Feeds'. Please see the warning messages.
         // Unable to generate entity type for table 'dbo.NewsByUser'. Please see the warning messages.
         // Unable to generate entity type for table 'dbo.NewsView'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.Visitors'. Please see the warning messages.
         // Unable to generate entity type for table 'dbo.VS_ThongKeBaoCao_Categories'. Please see the warning messages.
+        // Unable to generate entity type for table 'dbo.Visitors'. Please see the warning messages.
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -2691,6 +2694,10 @@ namespace VASEP.Models
 
                 entity.Property(e => e.Mobile).HasMaxLength(50);
 
+                entity.Property(e => e.Password)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Products).HasMaxLength(4000);
 
                 entity.Property(e => e.ProfileUrl).HasMaxLength(200);
@@ -4686,6 +4693,19 @@ namespace VASEP.Models
                 entity.Property(e => e.Query).IsRequired();
             });
 
+            modelBuilder.Entity<Subscribe>(entity =>
+            {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Email).HasMaxLength(255);
+
+                entity.Property(e => e.LanguageId).HasMaxLength(10);
+
+                entity.Property(e => e.Name).HasMaxLength(255);
+
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+            });
+
             modelBuilder.Entity<SynonymsGroups>(entity =>
             {
                 entity.HasKey(e => e.SynonymsGroupId);
@@ -4944,7 +4964,7 @@ namespace VASEP.Models
                     .HasName("IX_Tabs_ContentID")
                     .HasFilter("([ContentItemId] IS NOT NULL)");
 
-                entity.HasIndex(e => new { e.TabName, e.IsVisible, e.IconFile, e.DisableLink, e.Title, e.Description, e.KeyWords, e.TabPath, e.TabId, e.Url, e.SkinSrc, e.ContainerSrc, e.StartDate, e.EndDate, e.RefreshInterval, e.PageHeadText, e.IsSecure, e.PermanentRedirect, e.SiteMapPriority, e.CreatedByUserId, e.CreatedOnDate, e.LastModifiedByUserId, e.LastModifiedOnDate, e.IconFileLarge, e.CultureCode, e.ContentItemId, e.UniqueId, e.VersionGuid, e.DefaultLanguageGuid, e.LocalizedVersionGuid, e.PortalId, e.Level, e.ParentId, e.TabOrder, e.IsDeleted })
+                entity.HasIndex(e => new { e.TabName, e.IsVisible, e.TabId, e.IconFile, e.DisableLink, e.Title, e.Description, e.KeyWords, e.TabPath, e.Url, e.SkinSrc, e.ContainerSrc, e.StartDate, e.EndDate, e.RefreshInterval, e.PageHeadText, e.IsSecure, e.PermanentRedirect, e.SiteMapPriority, e.CreatedByUserId, e.CreatedOnDate, e.LastModifiedByUserId, e.LastModifiedOnDate, e.IconFileLarge, e.CultureCode, e.ContentItemId, e.UniqueId, e.VersionGuid, e.DefaultLanguageGuid, e.LocalizedVersionGuid, e.PortalId, e.Level, e.ParentId, e.TabOrder, e.IsDeleted })
                     .HasName("IX_Tabs_PortalLevelParentOrder");
 
                 entity.Property(e => e.TabId).HasColumnName("TabID");
@@ -5777,6 +5797,52 @@ namespace VASEP.Models
                 entity.Property(e => e.VideoId).HasColumnName("VideoID");
             });
 
+            modelBuilder.Entity<VsPublicationCarts>(entity =>
+            {
+                entity.ToTable("VS_PublicationCarts");
+
+                entity.Property(e => e.AddressExport).HasMaxLength(255);
+
+                entity.Property(e => e.AddressImport).HasMaxLength(255);
+
+                entity.Property(e => e.CompanyName).HasMaxLength(100);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Email).HasMaxLength(50);
+
+                entity.Property(e => e.FullName).HasMaxLength(100);
+
+                entity.Property(e => e.Mst)
+                    .HasColumnName("MST")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Note).HasMaxLength(1000);
+
+                entity.Property(e => e.Tel).HasMaxLength(50);
+
+                entity.Property(e => e.UpdatetedDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<VsPublicationValues>(entity =>
+            {
+                entity.ToTable("VS_PublicationValues");
+
+                entity.Property(e => e.Contents).HasMaxLength(500);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Currency).HasMaxLength(50);
+
+                entity.Property(e => e.Notes).HasMaxLength(1000);
+
+                entity.Property(e => e.ShortTitle).HasMaxLength(100);
+
+                entity.Property(e => e.Title).HasMaxLength(255);
+
+                entity.Property(e => e.Value).HasMaxLength(100);
+            });
+
             modelBuilder.Entity<VsThongkeBaoCao>(entity =>
             {
                 entity.ToTable("VS_ThongkeBaoCao");
@@ -5785,11 +5851,19 @@ namespace VASEP.Models
 
                 entity.Property(e => e.Contents).HasColumnType("ntext");
 
+                entity.Property(e => e.CountDownload).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.CountView).HasDefaultValueSql("((0))");
+
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Description).HasMaxLength(1000);
 
+                entity.Property(e => e.FileTemp).HasMaxLength(500);
+
                 entity.Property(e => e.LanguageId).HasMaxLength(10);
+
+                entity.Property(e => e.Month).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.PublishedDate).HasColumnType("datetime");
 
@@ -5802,6 +5876,8 @@ namespace VASEP.Models
                 entity.Property(e => e.Title).HasMaxLength(255);
 
                 entity.Property(e => e.UpdatedDate).HasColumnType("date");
+
+                entity.Property(e => e.Year).HasDefaultValueSql("((0))");
             });
 
             modelBuilder.Entity<VsThongKeBaoCaoFiles>(entity =>

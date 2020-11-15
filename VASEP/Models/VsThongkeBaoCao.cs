@@ -17,6 +17,8 @@ namespace VASEP.Models
         public byte? Kind { get; set; }
         public int CategoryId { get; set; }
         public byte? TypeId { get; set; }
+        public byte? Month { get; set; }
+        public short? Year { get; set; }
         public bool? IsPublish { get; set; }
         public bool? IsActive { get; set; }
         public DateTime? CreatedDate { get; set; }
@@ -25,6 +27,8 @@ namespace VASEP.Models
         public int? UpdatedUserId { get; set; }
         public DateTime? PublishedDate { get; set; }
         public int? PublishedUserId { get; set; }
+        public string FileTemp { get; set; }
+        public bool? RoleView { get; set; }
         public int? CountView { get; set; }
         public int? CountDownload { get; set; }
         public int? PortalId { get; set; }

@@ -9,11 +9,13 @@ namespace VASEP.Interfaces.Models.Member
     public class MemberGetListResponse : BaseResponse<ResponseStatus>
     {
         public List<MemberGetList> LstData { get; set; }
+        public int TotalRecords { get; set; }
     }
 
     public class MemberGetList
     {
-        public string Name { get; set; }
-        public string UrlToImage { get; set; }
+        public int Id { get; set; }
+        public string CompanyName { get; set; }
+        public string AvatarUrl { get; set; }
     }
 }
